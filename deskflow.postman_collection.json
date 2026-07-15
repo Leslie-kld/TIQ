@@ -1,0 +1,61 @@
+{
+  "info": {
+    "name": "DeskFlow API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" }
+  ],
+  "item": [
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"emp1@deskflow.com\",\n  \"password\": \"emp1234\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/auth/login", "host": ["{{baseUrl}}"], "path": ["api", "auth", "login"] }
+      }
+    },
+    {
+      "name": "Create Ticket",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Laptop won't turn on\",\n  \"description\": \"Screen stays black on power button press\",\n  \"priority\": \"High\",\n  \"createdById\": 1\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/tickets", "host": ["{{baseUrl}}"], "path": ["api", "tickets"] }
+      }
+    },
+    {
+      "name": "Get Tickets (Employee)",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/api/tickets?userId=1&role=Employee", "host": ["{{baseUrl}}"], "path": ["api", "tickets"], "query": [{ "key": "userId", "value": "1" }, { "key": "role", "value": "Employee" }] }
+      }
+    },
+    {
+      "name": "Get Tickets (Admin)",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/api/tickets?userId=2&role=Admin", "host": ["{{baseUrl}}"], "path": ["api", "tickets"], "query": [{ "key": "userId", "value": "2" }, { "key": "role", "value": "Admin" }] }
+      }
+    },
+    {
+      "name": "Update Ticket Status",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"InProgress\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/tickets/1", "host": ["{{baseUrl}}"], "path": ["api", "tickets", "1"] }
+      }
+    }
+  ]
+}
