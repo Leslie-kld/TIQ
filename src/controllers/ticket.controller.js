@@ -48,5 +48,24 @@ const getTickets = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
+const updateTicketStatus = async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
 
-module.exports = { createTicket, getTickets };
+  try {
+    if (!status) {
+      return res.status(400).json({ message: 'Status is required' });
+    }
+
+    const ticket = await prisma.ticket.update({
+      where: { id: Number(id) },
+      data: { status }
+    });
+
+    res.json(ticket);
+  } catch (error) {
+    console.error('Error updating ticket:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+module.exports = { createTicket, getTickets, updateTicketStatus };
