@@ -24,4 +24,29 @@ const createTicket = async (req, res) => {
   }
 };
 
-module.exports = { createTicket };
+const getTickets = async (req, res) => {
+  const { userId, role } = req.query;
+
+  try {
+    if (!userId || !role) {
+      return res.status(400).json({ message: 'userId and role are required' });
+    }
+
+    let tickets;
+
+    if (role === 'Admin') {
+      tickets = await prisma.ticket.findMany();
+    } else {
+      tickets = await prisma.ticket.findMany({
+        where: { createdById: Number(userId) }
+      });
+    }
+
+    res.json(tickets);
+  } catch (error) {
+    console.error('Error fetching tickets:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+module.exports = { createTicket, getTickets };
