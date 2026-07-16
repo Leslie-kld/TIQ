@@ -1,0 +1,35 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.badge-priority-low {
+  background: rgba(110, 231, 183, 0.1);
+  color: var(--priority-low);
+}
+.badge-priority-medium {
+  background: rgba(251, 191, 36, 0.1);
+  color: var(--priority-medium);
+}
+.badge-priority-high {
+  background: rgba(248, 113, 113, 0.1);
+  color: var(--priority-high);
+}
+.badge-status-open {
+  background: var(--status-open-bg);
+  color: var(--status-open);
+}
+.badge-status-progress {
+  background: var(--status-progress-bg);
+  color: var(--status-progress);
+}
+.badge-status-resolved {
+  background: var(--status-resolved-bg);
+  color: var(--status-resolved);
+}

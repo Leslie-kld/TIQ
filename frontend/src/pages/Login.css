@@ -1,0 +1,87 @@
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+}
+.login-card {
+  width: 380px;
+  padding: 36px;
+}
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  color: var(--text);
+  font-weight: 700;
+}
+.login-brand svg {
+  color: var(--accent);
+}
+.login-card h1 {
+  font-size: 22px;
+  margin-bottom: 2px;
+}
+.subtitle {
+  color: var(--text-3);
+  font-size: 13px;
+  margin-bottom: 22px;
+}
+.error-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--danger-bg);
+  color: var(--danger);
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+.login-card label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-2);
+  margin: 12px 0 5px;
+}
+.input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 9px 12px;
+  color: var(--text-3);
+}
+.input-wrap input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  font-size: 14px;
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+.login-card .btn-primary {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+}
+.quick-login {
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+}
+.quick-login p {
+  margin-bottom: 8px;
+}
+.quick-buttons {
+  display: flex;
+  gap: 8px;
+}
+.quick-buttons .btn-secondary {
+  flex: 1;
+}
