@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../lib/api';
 import { Ticket, Mail, Lock, AlertCircle } from 'lucide-react';
 import './Login.css';
 
@@ -15,7 +15,7 @@ function Login() {
     setError('');
     setLoading(true);
     try {
-      const { data } = await axios.post('http://localhost:5000/api/auth/login', {
+      const { data } = await api.post('/api/auth/login', {
         email: em,
         password: pw
       });

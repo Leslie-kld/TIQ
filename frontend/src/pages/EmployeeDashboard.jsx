@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../lib/api';
 import Navbar from '../components/Navbar';
 import { PriorityBadge, StatusBadge } from '../components/Badge';
 import { formatTicketRef } from '../lib/ticketFormat';
@@ -38,7 +38,7 @@ function EmployeeDashboard() {
   const fetchTickets = async (userId, showLoading = false) => {
     if (showLoading) setLoading(true);
     try {
-      const { data } = await axios.get('http://localhost:5000/api/tickets', {
+      const { data } = await api.get('/api/tickets', {
         params: { userId, role: 'Employee' }
       });
       setTickets(data);
@@ -49,8 +49,6 @@ function EmployeeDashboard() {
     }
   };
 
-  // Initial load, then poll every few seconds so status changes made by
-  // an Admin elsewhere show up here without a manual refresh.
   useEffect(() => {
     if (!user) return;
     fetchTickets(user.id, true);
@@ -69,7 +67,7 @@ function EmployeeDashboard() {
 
     setSubmitting(true);
     try {
-      await axios.post('http://localhost:5000/api/tickets', {
+      await api.post('/api/tickets', {
         title,
         description,
         priority,
